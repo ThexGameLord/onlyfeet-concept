@@ -1,14 +1,72 @@
-
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-      <title>OnlyFeet</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OnlyFeet</title>
+  <!-- Materialize CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <style>
+    body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+    main {
+      flex: 1 0 auto;
+    }
+  </style>
 </head>
-<h>some silly header here</h>
-      <body onload="checklogs()" onload="warn()">
-              <script>function warn() {
-                      console.log("Warning: You dont need to be in Here my g")
-                      }</script>
-            <img src="/_assets/file_transfer_poop.gif" alt="ftp" >
-        </body>
+<body>
+  <nav>
+    <div class="nav-wrapper blue darken-2">
+      <a href="#" class="brand-logo center">Random Meme Generator</a>
+    </div>
+  </nav>
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="col s12 center">
+          <img id="memeImage" class="responsive-img" alt="Random Meme">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 center">
+          <button class="btn waves-effect waves-light blue" onclick="getRandomMeme()">Get Random Meme</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- Materialize JS and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Custom JavaScript for fetching random memes -->
+  <script>
+    function getRandomMeme() {
+      // Replace this API endpoint with a proper meme API
+      const memeApiEndpoint = 'https://api.imgflip.com/get_memes';
+
+      // Fetch random meme data
+      fetch(memeApiEndpoint)
+        .then(response => response.json())
+        .then(data => {
+          const memes = data.data.memes;
+          const randomIndex = Math.floor(Math.random() * memes.length);
+          const randomMemeUrl = memes[randomIndex].url;
+
+          // Display the random meme
+          document.getElementById('memeImage').src = randomMemeUrl;
+        })
+        .catch(error => console.error('Error fetching meme:', error));
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize Materialize components
+      M.AutoInit();
+      
+      // Fetch and display a random meme on page load
+      getRandomMeme();
+    });
+  </script>
+</body>
 </html>
