@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+s<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -27,12 +27,12 @@
     <div class="container">
       <div class="row">
         <div class="col s12 center">
-          <img id="randomImage" class="responsive-img" alt="Random Image">
+          <img id="randomImage" class="responsive-img" alt="Idk thexgamelord put it here">
         </div>
       </div>
       <div class="row">
         <div class="col s12 center">
-          <button class="btn waves-effect waves-light blue" onclick="getRandomMeme()">Get Random Meme</button>
+          <button class="btn waves-effect waves-light blue" onclick="Dumbscript()">Site isn't finished</button>
         </div>
       </div>
     </div>
@@ -42,20 +42,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <!-- Custom JavaScript for fetching random memes -->
   <script>
-    function getRandomMeme() {
-      // Replace this API endpoint with a proper meme API
-      const imgApiEndpoint = 'https://api.imgflip.com/get_memes';
-
-      // Fetch random meme data
-      fetch(imgApiEndpoint)
-        .then(response => response.json())
-        .then(data => {
-          const rah = data.data.rah;
-          const randomIndex = Math.floor(Math.random() * rah.length);
-          const randomImageUrl = rah[randomIndex].url;
-
-          // Display the random meme
-          document.getElementById('randomImage').src = randomImageUrl;
+    function Dumbscript() {
+      document.getElementById('randomImage').src = "thexgamelord.pages.dev/favicon.ico";
         })
         .catch(error => console.error('Error fetching meme:', error));
     }
@@ -63,10 +51,11 @@
     document.addEventListener('DOMContentLoaded', function() {
       // Initialize Materialize components
       M.AutoInit();
-      
+      prompt("are you scared?")
       // Fetch and display a random meme on page load
-      getRandomMeme();
+      Dumbscript();
     });
   </script>
+  <div style="position: absolute;bottom: 8px;right: 16px;font-size: 18px;">made with ❤️ by <a href="https://github.com/Thexgamelord">Thexgamelord</a></div>
 </body>
 </html>
